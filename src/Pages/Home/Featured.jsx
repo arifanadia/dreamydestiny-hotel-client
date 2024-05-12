@@ -11,14 +11,14 @@ const Featured = ({ rooms }) => {
 
     return (
         
-            <div className="font-inter max-w-7xl lg:mx-auto md:mx-6 my-28">
-                <p className="w-2/5">ENJOY WORLD-CLASS STAY EXPERIANCE</p>
-                <h1 className="text-5xl my-6">Featured Rooms</h1>
-                <p className="w-1/2">Elevate your stay with our dreamyDestiny.Boasting modern design, expansive living spaces, and breathtaking city vistas, this penthouse suite offers the epitome of luxury living. Experience sophistication and comfort like never before.</p>
-                <div className="grid h-56 grid-cols-3 gap-4 sm:h-64 xl:h-80 2xl:h-96 mt-10">
+            <div className="font-inter max-w-7xl lg:mx-auto md:mx-6 mt-20 md:text-left text-center ">
+                <p className="lg:w-2/5">ENJOY WORLD-CLASS STAY EXPERIANCE</p>
+                <h1 className="text-5xl font-bold text-primaryColor my-6">Featured Rooms</h1>
+                <p className="lg:w-1/2">Elevate your stay with our dreamyDestiny.Boasting modern design, expansive living spaces, and breathtaking city vistas, this penthouse suite offers the epitome of luxury living. Experience sophistication and comfort like never before.</p>
+                <div className="grid h-56 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:h-64 xl:h-80 2xl:h-96 mt-10 mb-20">
                     {featuredRooms.map((room) =>
                         <Card key={room._id}
-                            className="max-w-full"
+                            className="lg:max-w-full max-w-lg mx-auto "
 
                         > <img className="h-[250px] rounded-lg" src={room.room_image} alt="" />
                             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">

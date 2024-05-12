@@ -1,0 +1,46 @@
+import { Card } from "flowbite-react";
+import { Link } from "react-router-dom";
+
+
+
+const Featured = ({ rooms }) => {
+    const featuredRooms = rooms.filter(f => f.featured)
+    console.log(featuredRooms);
+
+
+
+    return (
+        
+            <div className="font-inter max-w-7xl lg:mx-auto md:mx-6 my-28">
+                <p className="w-2/5">ENJOY WORLD-CLASS STAY EXPERIANCE</p>
+                <h1 className="text-5xl my-6">Featured Rooms</h1>
+                <p className="w-1/2">Elevate your stay with our dreamyDestiny.Boasting modern design, expansive living spaces, and breathtaking city vistas, this penthouse suite offers the epitome of luxury living. Experience sophistication and comfort like never before.</p>
+                <div className="grid h-56 grid-cols-3 gap-4 sm:h-64 xl:h-80 2xl:h-96 mt-10">
+                    {featuredRooms.map((room) =>
+                        <Card key={room._id}
+                            className="max-w-full"
+
+                        > <img className="h-[250px] rounded-lg" src={room.room_image} alt="" />
+                            <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                {room.room_type}
+                            </h5>
+                            <p title={room.description} className="font-normal text-gray-700 dark:text-gray-400">
+                                {room.description.substring(0, 70)}....
+                            </p>
+                            <Link to={`/room-details/${room._id}`}>
+                                <button className="bg-primaryColor w-full rounded-lg py-2 text-white">Book Now</button>
+                            </Link>
+
+                        </Card>
+
+
+
+                    )}
+
+                </div>
+            </div>
+     
+    );
+};
+
+export default Featured;

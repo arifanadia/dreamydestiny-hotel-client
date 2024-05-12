@@ -11,39 +11,41 @@ import Register from "../Pages/Register/Register";
 
 const router = createBrowserRouter([
     {
-      path: "/",
-      element: <Root></Root>,
-      children : [
-        {
-            path :"/",
-            element : <Home></Home>
-        },
-        {
-            path :"/login",
-            element : <LogIn></LogIn>
-        },
-        {
-            path :"/register",
-            element : <Register></Register>
-        },
-        {
-            path : '/about-us',
-            element : <About></About>
-        },
-        {
-            path : '/rooms',
-            element : <Rooms></Rooms>
-        },
-        {
-            path : '/my-bookings',
-            element : <MyBookings></MyBookings>
-        },
-        {
-            path : '/contact-us',
-            element : <ContactUs></ContactUs>
-        },
-      ]
+        path: "/",
+        element: <Root></Root>,
+        children: [
+            {
+                path: "/",
+                element: <Home></Home>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/rooms`)
+            },
+            {
+                path: "/login",
+                element: <LogIn></LogIn>
+            },
+            {
+                path: "/register",
+                element: <Register></Register>
+            },
+            {
+                path: '/about-us',
+                element: <About></About>
+            },
+            {
+                path: '/rooms',
+                element: <Rooms></Rooms>,
+
+            },
+            {
+                path: '/my-bookings',
+                element: <MyBookings></MyBookings>
+            },
+            {
+                path: '/contact-us',
+                element: <ContactUs></ContactUs>
+            },
+        ]
     },
-  ]);
+]);
 
 export default router;

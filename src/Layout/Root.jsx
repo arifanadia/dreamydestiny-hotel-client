@@ -7,10 +7,12 @@ import Footer from "../Shared/Footer/FooterD";
 
 const Root = () => {
     return (
-        <div>
+        <div className="font-inter ">
             <Header></Header>
 
-            <Outlet></Outlet>
+            <div className="min-h-[calc(100vh - 116px)]">
+                <Outlet></Outlet>
+            </div>
 
             <Footer></Footer>
 

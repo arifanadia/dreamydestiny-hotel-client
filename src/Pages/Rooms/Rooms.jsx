@@ -1,10 +1,14 @@
+import { useLoaderData } from 'react-router-dom';
 import bg from '../../images/rooms/roombg.jpg'
 import bg1 from '../../images/rooms/roombg2.jpg'
+import RoomSuites from './RoomSuites';
 
 const Rooms = () => {
+    const rooms = useLoaderData();
+    console.log(rooms);
 
     return (
-        <div>
+        <div className='mt-24 mb-[1500px]'>
             <div className="lg:p-32 p-24 bg-no-repeat bg-cover bg-center text-center text-white font-inter"
                 style={{ backgroundImage: `linear-gradient(#0f0c29BA ,#302b638A,#24243e4D) , url(${bg})` }}>
                 <h5>CHECK OUR ACCOMMODATIONS</h5>
@@ -20,14 +24,15 @@ const Rooms = () => {
                     <a href='#activities'><button className='text-xl border border-primaryColor py-2 px-4'>Our Rooms & Suites</button></a>
                     <a href='#rooms'><button className='text-xl border border-primaryColor py-2 px-4'>Our Extra activities</button></a>
                 </div>
-                <div className="lg:p-24 p-24 bg-no-repeat bg-cover bg-center text-center text-white font-inter"
+                <div className=" lg:p-24 p-24 bg-no-repeat bg-cover bg-center text-center text-white font-inter"
                     style={{ backgroundImage: `linear-gradient(#0f0c29BA ,#302b638A,#24243e4D) , url(${bg1})` }}>
                     <h1 className='lg:text-4xl text-2xl mt-4 font-semibold '>Rooms & Suites</h1>
 
                 </div>
-                <div>
+                <div className='max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:h-64 xl:h-80 2xl:h-96 mt-10 mb-20'>
                     {
-                        
+                        rooms.map(room => <RoomSuites key={room._id} room={room}></RoomSuites> )
+
                     }
                 </div>
             </div>

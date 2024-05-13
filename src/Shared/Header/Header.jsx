@@ -17,6 +17,7 @@ import { FaMoon, FaSun } from "react-icons/fa"
 import { Link } from "react-router-dom"
 import useAuth from "../../Hook/useAuth"
 import { LuLogOut } from "react-icons/lu"
+import { AvatarGroup } from "@mui/material"
 const setDarkMode = () => {
     document.querySelector('body').setAttribute('data-theme', 'dark')
     localStorage.setItem('selectedTheme', 'dark');
@@ -78,6 +79,7 @@ const Header = () => {
                         <span className="text-xl">    {selectedTheme === "light" ? <FaMoon /> : <FaSun />}</span>
 
                     </Button>
+                    <AvatarGroup alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                     {
                         user ?
                             <Dropdown

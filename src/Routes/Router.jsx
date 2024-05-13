@@ -7,6 +7,7 @@ import MyBookings from "../Pages/MyBookings/MyBookings";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import LogIn from "../Pages/LogIn/LogIn ";
 import Register from "../Pages/Register/Register";
+import RoomsDetails from "../Pages/Rooms/RoomsDetails";
 
 
 const router = createBrowserRouter([
@@ -35,6 +36,12 @@ const router = createBrowserRouter([
                 path: '/rooms',
                 element: <Rooms></Rooms>,
                 loader: () => fetch(`${import.meta.env.VITE_API_URL}/rooms`)
+
+            },
+            {
+                path: '/room-details/:id',
+                element: <RoomsDetails></RoomsDetails>,
+                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/room-details/${params.id}`)
 
             },
             {

@@ -43,7 +43,7 @@ const Slider = () => {
                         des={"Discover comfort and luxury at our hotels. Perfect for any trip. Indulge, relax, and create unforgettable memories with us."} /></SwiperSlide>
 
             </Swiper>
-            <div className="absolute -top-2 z-10 right-2 hidden lg:inline w-1/2 py-20 pl-28 mr-10">
+            <div className="absolute -top-2 z-[2] right-2 hidden lg:inline w-1/2 py-20 pl-28 mr-10">
                 <form className="lg:w-10/12 p-6 bg-[#f6f6f6E9] text-primaryColor rounded-lg mx-8 lg:mx-0">
                     <p className="text-center font-inter ">CHOOSE DATE TO SEARCH</p>
                     <h2 className="text-center mt-3 text-3xl  font-inter font-semibold">BOOK YOUR STAY</h2>
@@ -56,7 +56,7 @@ const Slider = () => {
                     </div>
                     <div className="form-control">
                         <select className="select select-bordered ">
-                            <option disabled selected>Choose Room</option>
+                            <option disabled>Choose Room</option>
                             <option>Room 1</option>
                             <option>Room 2</option>
                             <option>Room 3</option>
@@ -66,7 +66,7 @@ const Slider = () => {
                     </div>
                     <div className="flex gap-2 my-4 ">
                         <select className="select select-bordered lg:w-1/2 ">
-                            <option disabled selected>Adult</option>
+                            <option disabled>Adult</option>
                             <option>Adult 1</option>
                             <option>Adult 2</option>
                             <option>Adult 3</option>
@@ -74,7 +74,7 @@ const Slider = () => {
 
                         </select>
                         <select className="select select-bordered w-1/2 ">
-                            <option disabled selected>Child</option>
+                            <option disabled>Child</option>
                             <option>Child 1</option>
                             <option>Child 2</option>
                             <option>Child 3</option>
@@ -87,7 +87,7 @@ const Slider = () => {
                     </div>
                 </form>
             </div>
-            <div className="absolute z-10 lg:hidden mx-auto top-96  md:right-8 md:left-8 right-6 left-6 w-3/4">
+            <div className="absolute z-[2] lg:hidden mx-auto top-96  md:right-8 md:left-8 right-6 left-6 w-3/4">
 
                 <form className=" p-6 bg-[#f6f6f6E9] text-primaryColor rounded-lg mx-8 lg:mx-0">
                     <p className="text-center font-inter ">CHOOSE DATE TO SEARCH</p>
@@ -100,7 +100,7 @@ const Slider = () => {
                     </div>
                     <div className="form-control">
                         <select className="select select-bordered ">
-                            <option disabled selected>Choose Room</option>
+                            <option disabled>Choose Room</option>
                             <option>Room 1</option>
                             <option>Room 2</option>
                             <option>Room 3</option>
@@ -110,7 +110,7 @@ const Slider = () => {
                     </div>
                     <div className="flex gap-2 my-4 ">
                         <select className="select select-bordered w-1/2 ">
-                            <option disabled selected>Adult</option>
+                            <option disabled>Adult</option>
                             <option>Adult 1</option>
                             <option>Adult 2</option>
                             <option>Adult 3</option>
@@ -118,7 +118,7 @@ const Slider = () => {
 
                         </select>
                         <select className="select select-bordered w-1/2 ">
-                            <option disabled selected>Child</option>
+                            <option disabled>Child</option>
                             <option>Child 1</option>
                             <option>Child 2</option>
                             <option>Child 3</option>

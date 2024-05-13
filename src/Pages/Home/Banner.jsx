@@ -1,4 +1,5 @@
 import { Button } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 
 const Banner = ({ image, text, des }) => {
@@ -10,7 +11,9 @@ const Banner = ({ image, text, des }) => {
                 <h1 className="font-inter text-5xl text-white  font-bold  leading-snug xl:w-1/3 lg:w-2/5  ">{text}</h1>
                 <p className="lg:w-1/3 text-[#f6f6f6]">{des}</p>
                 <div className="flex gap-6">
+                    <Link to='/register'>
                     <Button className="bg-primaryColor mx-auto lg:mx-0 mt-8 text-2xl shadow-xl">Register Now</Button>
+                    </Link>
                     <Button className="bg-primaryColor mx-auto lg:mx-0 mt-8 text-2xl shadow-xl">Enquire Now</Button>
                 </div>
             </div>

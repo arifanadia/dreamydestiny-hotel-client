@@ -15,6 +15,8 @@ import { useEffect, useState } from "react"
 import { AiOutlineSearch } from "react-icons/ai"
 import { FaMoon, FaSun } from "react-icons/fa"
 import { Link } from "react-router-dom"
+import useAuth from "../../Hook/useAuth"
+import { LuLogOut } from "react-icons/lu"
 const setDarkMode = () => {
     document.querySelector('body').setAttribute('data-theme', 'dark')
     localStorage.setItem('selectedTheme', 'dark');
@@ -27,8 +29,12 @@ const selectedMode = localStorage.getItem('selectedTheme')
 
 
 const Header = () => {
+    const { user, logOut } = useAuth()
 
     const [selectedTheme, setSelectedTheme] = useState(selectedMode || 'light')
+    const handleLogOut = () => {
+        logOut()
+    }
 
 
 
@@ -45,7 +51,7 @@ const Header = () => {
     }
 
     return (
-        <div className={`${toggleTheme}`}>
+        <div className={`${toggleTheme} `} >
             <Navbar className="border-2">
                 <Link to="/">
                     <h3 className=" self-center whitespace-nowrap text-lg font-lobster sm:text-xl font-semibold text-primaryColor dark:text-white">DreamyDestiny</h3>
@@ -72,26 +78,34 @@ const Header = () => {
                         <span className="text-xl">    {selectedTheme === "light" ? <FaMoon /> : <FaSun />}</span>
 
                     </Button>
-                    <Dropdown
-                        arrowIcon={false}
-                        inline
-                        label={
-                            <Avatar img="https://i.ibb.co/mCv7FyF/depositphotos-649066108-stock-photo-pink-flowers-park-spring-bloosom.webp" alt="" />
-                        }>
-                        <DropdownHeader>
-                            <span className="block">Nadia</span>
-                            <span className="block">Nadia@gmail.com</span>
-                        </DropdownHeader>
-                        <DropdownDivider />
-                        <DropdownItem>Log Out</DropdownItem>
+                    {
+                        user ?
+                            <Dropdown
+                                title={user?.displayName}
+                                arrowIcon={false}
+                                inline
+                                label={
+                                    <Avatar refererpolicy='no-referrer' img={user?.photoURL} alt="photo" />
+                                }>
+                                <DropdownHeader className="z-[5] mb-4 space-y-2 ">
+                                    <img className='w-20 h-20 mx-auto rounded-full' src={user?.photoURL} alt="" />
+                                    <span className="block text-center">{user?.displayName}</span>
+                                    <DropdownDivider />
+                                    <span className="block text-center">{user?.email}</span>
+                                </DropdownHeader>
+                                <DropdownDivider />
+                                <DropdownItem className="text-center gap-2" onClick={handleLogOut}>Log Out <LuLogOut className="text-red-800" /></DropdownItem>
 
-                    </Dropdown>
-                    <Link to="/login">
-                        <Button gradientDuoTone='cyanToBlue' outline>
-                            Sign In
-                        </Button>
+                            </Dropdown>
+                            :
+                            <Link to="/login">
+                                <Button gradientDuoTone='cyanToBlue' outline>
+                                    Sign In
+                                </Button>
 
-                    </Link>
+                            </Link>
+                    }
+
                     <NavbarToggle />
                 </div>
                 <NavbarCollapse>

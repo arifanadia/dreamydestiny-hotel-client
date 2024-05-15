@@ -20,31 +20,34 @@ const MapSection = () => {
         iconSize: [38.38]
     })
     return (
-        <div className='flex max-w-7xl mx-auto my-24 '>
-               <h1 className="lg:text-3xl text-2xl font-semibold">
-                   Find Us By Map</h1>
-            <div className="w-2/3 h-96">
+        <div className='my-24'>
+            <h1 className="lg:text-4xl text-center my-8 text-2xl font-semibold">
+                Find Us By Map</h1>
+            <div className='flex max-w-7xl mx-auto  '>
 
-                <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} style={{ width: '100%', height: '100%' }}>
+                <div className="w-2/3 h-96">
 
-                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
+                    <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} style={{ width: '100%', height: '100%' }}>
 
-                    {
-                        markers.map((marker, idx) =>
-                            <Marker key={idx} position={marker.geocode} icon={customIcon}>
+                        <TileLayer
+                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
 
-                            </Marker>
-                        )
-                    }
-                </MapContainer>
-            </div>
-            <div className="p-52 h-96  bg-no-repeat bg-cover bg-center"
-                style={{ backgroundImage: `linear-gradient(#0f0c29BA ,#302b638A,#24243e4D) ,url(${image})` }}>
+                        {
+                            markers.map((marker, idx) =>
+                                <Marker key={idx} position={marker.geocode} icon={customIcon}>
+
+                                </Marker>
+                            )
+                        }
+                    </MapContainer>
+                </div>
+                <div className="px-52 h-96  bg-no-repeat bg-cover bg-center"
+                    style={{ backgroundImage: `linear-gradient(#0f0c29BA ,#302b638A,#24243e4D) ,url(${image})` }}>
                     <h1>hello</h1>
 
+                </div>
             </div>
         </div>
     );

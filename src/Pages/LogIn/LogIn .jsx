@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import bg from "../../images/banner/bg-5.jpg"
 import SocialLogin from "./SocialLogin";
 import useAuth from "../../Hook/useAuth";
@@ -7,6 +7,8 @@ import toast from "react-hot-toast";
 const LogIn = () => {
     const { logIn } = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
+   
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -16,14 +18,14 @@ const LogIn = () => {
         const remember = form.checked.value
         console.log(email, pass, remember);
 
-    try{
-        const result = await logIn(email, pass)
-        console.log(result);
-        navigate('/')
-        toast.success('sign In Successfully')
-    } catch (err){
-        toast.error(err?.message)
-    }
+        try {
+            const result = await logIn(email, pass)
+            console.log(result);
+            navigate(location?.state ? location.state : "/" ,{replace : true})
+            toast.success('sign In Successfully')
+        } catch (err) {
+            toast.error(err?.message)
+        }
 
 
     }

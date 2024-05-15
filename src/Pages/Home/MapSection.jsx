@@ -1,20 +1,22 @@
-import { Map, Marker } from "pigeon-maps";
-import bg from "../../images/about/map.webp"
+
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+
 
 const MapSection = () => {
-
     return (
-        <div className="flex mb-20">
-            <Map className="max-w-sm"
-                height={300} defaultCenter={[50.879, 4.6997]} defaultZoom={11}>
-                <Marker width={50} anchor={[50.879, 4.6997]} />
-            </Map>
-            <div className=" bg-no-repeat bg-cover bg-center w-full "
-             style={{ backgroundImage: `linear-gradient(#0f0c29BA ,#302b638A,#24243e4D) , url(${bg})` }}>
-
-             </div>
-
-
+        <div className="">
+            <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position={[51.505, -0.09]}>
+                    <Popup>
+                        A pretty CSS3 popup. <br /> Easily customizable.
+                    </Popup>
+                </Marker>
+            </MapContainer>
         </div>
     );
 };

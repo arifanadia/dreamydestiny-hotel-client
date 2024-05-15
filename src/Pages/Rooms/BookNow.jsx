@@ -3,12 +3,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import axios from "axios";
+
+import BookNowModal from "./BookNowModal";
+
 
 
 
 const BookNow = ({ roomDetails }) => {
-    const {room_image, price_per_night,room_type, availability } = roomDetails || {}
+    const { room_image, price_per_night, room_type } = roomDetails || {}
     const roomCleanPrice = 12;
     const massagePrice = 34;
     const spaPrice = 40;
@@ -17,21 +19,26 @@ const BookNow = ({ roomDetails }) => {
     const { user } = useAuth()
     const [massageCount, setMassageCount] = useState(0);
     const [spaCount, setSpaCount] = useState(0);
+    const [bookingData, setBookingData] = useState({});
     const [startDate, setStartDate] = useState(new Date());
     const [startDate2, setStartDate2] = useState(new Date());
     // const [isAvailable, setIsAvailable] = useState(availability === true)
+    const [open, setOpen] = useState(false);
+
+    
+
+
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
 
     const handleBookNow = async (e) => {
         e.preventDefault();
         const form = e.target
-        // if (isAvailable ) {
         const checkInDate = startDate
         const checkOutDate = startDate2
         if (checkOutDate <= checkInDate) return toast.error('end date must be after start date')
-        // const roomCount = form.roomCount.value;
-
-        // if (roomCount < 1) return toast.error('please select at 1 room')
+    
 
         const adultCount = form.adultCount.value;
         console.log(adultCount);
@@ -50,7 +57,7 @@ const BookNow = ({ roomDetails }) => {
         const nightCount = Math.floor((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24));
 
         // main total price
-        const mainTotalPrice = price_per_night * nightCount ;
+        const mainTotalPrice = price_per_night * nightCount;
 
         // extraPrice 
         let extraPrice = 0;
@@ -63,32 +70,24 @@ const BookNow = ({ roomDetails }) => {
         const totalPrice = mainTotalPrice + extraTotalPrice
 
 
-        const booking = {
-            checkInDate : new Date(checkInDate).toLocaleDateString(),
-            checkOutDate : new Date(checkOutDate).toLocaleDateString(),
-            adultCount,
-            childCount,
-            totalPrice,
-            price_per_night,
-            email,
-            img : room_image,
-            room_type,
-            roomCount
+      setBookingData ( {
+                checkInDate: new Date(checkInDate).toLocaleDateString(),
+                checkOutDate: new Date(checkOutDate).toLocaleDateString(),
+                adultCount,
+                childCount,
+                totalPrice,
+                price_per_night,
+                email,
+                img: room_image,
+                room_type,
+                roomCount
+            }
+            )
+      
 
-        }
-        console.log(booking);
-        // setIsAvailable(false)
+ 
 
 
-        try {
-            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/bookings`, booking)
-            console.log(data);
-            // Check if the selected room is available for the specified dates
-
-        }
-        catch (err) {
-            console.log(err);
-        }
         // } else {
 
         //     toast.error('sorry this room is already booked')
@@ -114,6 +113,7 @@ const BookNow = ({ roomDetails }) => {
             setSpaCount(spaCount - 1)
         }
     }
+    console.log(bookingData);
     return (
         <form onSubmit={handleBookNow} className="px-3 my-6 text-primaryColor rounded-lg mx-8 lg:mx-auto">
             <div className="flex  items-center gap-10 justify-between">
@@ -124,10 +124,10 @@ const BookNow = ({ roomDetails }) => {
             </div>
             <div className=" mt-6 mb-4 md:flex md:gap-4 gap-8  ">
 
-                <DatePicker className="border-2 p-2 rounded-md" selected={startDate} onChange={(date) => setStartDate(date)} />
-                <DatePicker className="border-2 p-2 mt-4 md:mt-0 rounded-md" selected={startDate2} onChange={(date) => setStartDate2(date)} />
+                <DatePicker className="border-2 p-2 rounded-md" selected={startDate} onChange={(date) => setStartDate(date)} minDate={new Date()}/>
+                <DatePicker className="border-2 p-2 mt-4 md:mt-0 rounded-md" selected={startDate2} onChange={(date) => setStartDate2(date)} minDate={new Date()} />
             </div>
-            
+
             <div className="flex gap-2 my-4 ">
                 <select name="adultCount" id="countries" className="bg-white border-2 border-black text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" defaultValue={0} required>
                     <option value={0} disabled  >Select Adult</option>
@@ -143,7 +143,7 @@ const BookNow = ({ roomDetails }) => {
                     <option value={3}>Child 3</option>
                     <option value={4}>Child 4</option>
                 </select>
-            
+
             </div>
             <div className="mt-10">
                 <h2 className=" mt-3 text-2xl font-inter font-semibold">Extra Services</h2>
@@ -204,7 +204,9 @@ const BookNow = ({ roomDetails }) => {
 
             </div>
             <div className="form-control mt-6">
-                <button onClick={() => setOpenModal(true)} className="btn bg-primaryColor dark:bg-white text-white">Book Now</button>
+                <button onClick={handleOpen}
+                    className="btn bg-primaryColor dark:bg-white text-white">Book Now</button>
+                <BookNowModal bookingData={bookingData} handleClose={handleClose} open={open}></BookNowModal>
 
 
             </div>

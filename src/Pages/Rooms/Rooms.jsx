@@ -1,11 +1,33 @@
-import { useLoaderData } from 'react-router-dom';
+
 import bg from '../../images/rooms/roombg.jpg'
 import bg1 from '../../images/rooms/roombg2.jpg'
 import RoomSuites from './RoomSuites';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Rooms = () => {
-    const rooms = useLoaderData();
-    console.log(rooms);
+
+
+    const [rooms, setRooms] = useState([]);
+    const [minPrice, setMinPrice] = useState(100);
+    const [maxPrice, setMaxPrice] = useState(500);
+    const url = `${import.meta.env.VITE_API_URL}/rooms?minPrice=${minPrice}&maxPrice=${maxPrice}`
+
+    useEffect(() => {
+        getData()
+    }, [minPrice, maxPrice])
+    const getData = async () => {
+        const { data } = await axios.get(url);
+        console.log(data);
+        setRooms(data)
+    }
+    const handleMinPriceChange = (event) => {
+        setMinPrice(event.target.value);
+    };
+
+    const handleMaxPriceChange = (event) => {
+        setMaxPrice(event.target.value);
+    };
 
     return (
         <div className='mt-24 mb-[1500px]'>
@@ -29,9 +51,14 @@ const Rooms = () => {
                     <h1 className='lg:text-4xl text-2xl mt-4 font-semibold '>Rooms & Suites</h1>
 
                 </div>
+                <div className='my-6 bg-white shadow-xl rounded-lg'>
+                    <h5 className='text-primaryColor text-2xl font-bold my-6'>Filter By Price</h5>
+                    <input className='rounded-lg mb-10' type="number" value={minPrice} onChange={handleMinPriceChange} placeholder="Min Price" />
+                    <input className='rounded-lg mx-6 mb-10' type="number" value={maxPrice} onChange={handleMaxPriceChange} placeholder="Max Price" />
+                </div>
                 <div className='max-w-7xl justify-center lg:mx-auto mx-6 grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:h-64 xl:h-80 2xl:h-96 mt-10 mb-20'>
                     {
-                        rooms.map(room => <RoomSuites key={room._id} room={room}></RoomSuites> )
+                        rooms.map(room => <RoomSuites key={room._id} room={room}></RoomSuites>)
 
                     }
                 </div>

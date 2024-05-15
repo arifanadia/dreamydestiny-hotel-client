@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../Firebase/Firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null)
 
@@ -35,14 +36,31 @@ const AuthProvider = ({ children }) => {
     // onAuthState
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log(currentUser);
             setUser(currentUser);
+            const userEmail = currentUser?.email || user?.email
+            const loggedUser = { email: userEmail }
+            if (currentUser) {
+                axios.post('http://localhost:5000/jwt', loggedUser, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log(res.data);
+                    })
+            } else{
+                axios.post('http://localhost:5000/logout', loggedUser , {
+                    withCredentials :true
+                })
+                  .then(res => {
+                    console.log(res.data);
+                  })
+            }
+
             setLoading(false)
         });
         return () => {
-            unSubscribe();
+            return unSubscribe()
         }
-    }, []);
+    }, [])
     // update profile
 
     const updateUserProfile = (name, photo) => {

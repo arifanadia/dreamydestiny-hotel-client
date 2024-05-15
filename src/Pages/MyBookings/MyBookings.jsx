@@ -37,7 +37,7 @@ const MyBookings = () => {
         getData()
     }, [user])
     const getData = async () => {
-        const { data } = await axios.get(url);
+        const { data } = await axios.get(url, {withCredentials : true});
         console.log(data);
         setBookings(data)
     }
@@ -61,11 +61,10 @@ const MyBookings = () => {
                             title: "Deleted!",
                             text: "Your file has been deleted.",
                             icon: "success"
-                        });
-                        getData()
-
+                        } )
 
                     }
+                    getData()
 
                 }
                 catch (err) {

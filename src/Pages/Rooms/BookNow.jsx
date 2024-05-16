@@ -48,6 +48,7 @@ const BookNow = ({ roomDetails }) => {
         }
         const childCount = form.childCount.value;
         const email = user?.email;
+        const name = user?.displayName
         const roomClean = form.roomClean.value;
         console.log(roomClean);
 
@@ -80,7 +81,8 @@ const BookNow = ({ roomDetails }) => {
                 email,
                 img: room_image,
                 room_type,
-                roomCount
+                roomCount,
+                name
             }
             )
       

@@ -2,9 +2,9 @@
 
 const NewsLetter = () => {
     return (
-        <div className="md:flex items-center justify-center gap-8 max-w-6xl lg:mx-auto mx-6 bg-white shadow-xl rounded-lg p-8 text-primaryColor f font-inter">
+        <div className="md:flex items-center justify-center gap-8 max-w-7xl lg:mx-auto mx-6 bg-white shadow-xl rounded-lg p-8 text-primaryColor f font-inter">
             <div className="flex-1 ">
-                <p className=" text-lg my-4">STAY TUNED WITH COZYSTAY</p>
+                <p className=" text-lg my-4">STAY TUNED WITH DREMYDESTINY</p>
                 <h1 className="lg:text-3xl text-2xl font-semibold">
                     Sign up for our newsletter to <br />receive our news, deals and special offers.</h1>
             </div>

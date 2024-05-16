@@ -111,6 +111,8 @@ const MyBookings = () => {
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>SubTotal</th>
+                        <th>Update</th>
+                        <th>Post</th>
                     </tr>
                 </thead>
                 <tbody>

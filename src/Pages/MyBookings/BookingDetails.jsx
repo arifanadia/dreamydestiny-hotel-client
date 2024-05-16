@@ -1,5 +1,6 @@
 import { Modal } from "flowbite-react";
-// import { useState } from "react";
+import { MdDateRange } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 
 import DatePicker from "react-datepicker";
 
@@ -48,7 +49,7 @@ const BookingDetails = ({ booking, handleUpdateDate, showModal, setShowModal, ha
                 <td>{roomCount}</td>
                 <td>{totalPrice}</td>
                 <th>
-                    <button onClick={() => setShowModal(true)} className="btn btn-ghost btn-xs">Update Date</button>
+                    <button onClick={() => setShowModal(true)} className="btn btn-ghost text-xl btn-xs"><MdDateRange /> </button>
 
                     {/* Modal component */}
                     <Modal className="-mt-6 py-12 h-[600px] text-primaryColor font-inter bg-white shadow-xl text-center p-6" show={showModal} >
@@ -67,6 +68,7 @@ const BookingDetails = ({ booking, handleUpdateDate, showModal, setShowModal, ha
                         <button onClick={() => { handleUpdateDate(_id); setShowModal(false) }} className="btn mt-14 mb-8 mx-auto bg-primaryColor text-white">Save Changes</button>
                     </Modal>
                 </th>
+                <th><FaEdit /></th>
             </tr>
         </>
     );

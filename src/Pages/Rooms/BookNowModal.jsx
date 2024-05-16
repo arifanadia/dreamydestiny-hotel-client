@@ -38,7 +38,7 @@ const BookNowModal = ({ bookingData, handleClose, open }) => {
         try {
             const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/bookings`, bookingData)
             console.log(data);
-            // Check if the selected room is available for the specified dates
+      
 
 
         }

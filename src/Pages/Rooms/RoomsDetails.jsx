@@ -4,6 +4,8 @@ import swim from '../../images/icons/swimming-pool.png'
 import crib from '../../images/icons/baby-crib.png'
 import washing from '../../images/icons/washing-machine.png'
 import BookNow from "./BookNow";
+import Review from "./Review";
+
 
 
 // price_per_night, special_offer
@@ -13,9 +15,9 @@ const RoomsDetails = () => {
     const roomDetails = useLoaderData();
 
     console.log(roomDetails);
-    const { room_image, room_type, description, availability, room_size,  } = roomDetails || {}
+    const { room_image, room_type, description, availability, room_size, } = roomDetails || {}
 
-    
+
 
     return (
         <div>
@@ -58,9 +60,11 @@ const RoomsDetails = () => {
                 <div className="bg-white shadow-xl rounded-lg p-4  max-w-4xl">
                     <BookNow roomDetails={roomDetails}></BookNow>
                 </div>
+
             </div>
 
 
+            <Review roomDetails={roomDetails}></Review>
 
         </div>
     );

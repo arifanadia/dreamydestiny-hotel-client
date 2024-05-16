@@ -5,7 +5,7 @@ import logo from '../../images/logo dreamyDestiny.png'
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
 const FooterD = () => {
     return (
-        <Footer className="border border-t-8 border-primaryColor mt-96">
+        <Footer className="border border-t-8 border-primaryColor mt-14">
             <div className="w-full max-w-7xl mx-auto">
                 <div className="grid w-full justify-between sm:flex md:grid-cols-1">
                     <div className="mt-5">

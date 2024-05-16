@@ -10,7 +10,7 @@ const Root = () => {
         <div className="font-inter ">
             <Header></Header>
 
-            <div className="min-h-[calc(100vh - 116px)]">
+            <div className="min-h-[calc(100vh - 40vh)]">
                 <Outlet></Outlet>
             </div>
 

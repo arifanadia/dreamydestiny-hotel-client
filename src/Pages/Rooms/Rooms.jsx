@@ -30,7 +30,7 @@ const Rooms = () => {
     };
 
     return (
-        <div className='mt-24 mb-[1500px]'>
+        <div className='mt-24 xl:mb-[900px] lg:mb-[1000px] sm:mb-[1300px]'>
             <div className="lg:p-32 p-24 bg-no-repeat bg-cover bg-center text-center text-white font-inter"
                 style={{ backgroundImage: `linear-gradient(#0f0c29BA ,#302b638A,#24243e4D) , url(${bg})` }}>
                 <h5>CHECK OUR ACCOMMODATIONS</h5>
@@ -56,7 +56,7 @@ const Rooms = () => {
                     <input className='rounded-lg mb-10' type="number" value={minPrice} onChange={handleMinPriceChange} placeholder="Min Price" />
                     <input className='rounded-lg mx-6 mb-10' type="number" value={maxPrice} onChange={handleMaxPriceChange} placeholder="Max Price" />
                 </div>
-                <div className='max-w-7xl justify-center lg:mx-auto mx-6 grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:h-64 xl:h-80 2xl:h-96 mt-10 mb-20'>
+                <div className='max-w-7xl justify-center lg:mx-auto mx-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:h-64 xl:h-80 2xl:h-96 mt-10 mb-20'>
                     {
                         rooms.map(room => <RoomSuites key={room._id} room={room}></RoomSuites>)
 

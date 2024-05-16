@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import image from "../../images/about/about-3.jpg"
 import useAuth from "../../Hook/useAuth";
 import toast from "react-hot-toast";
+import axios from "axios";
+
 
 const Register = () => {
     const { createUser, user, setUser, updateUserProfile } = useAuth();
@@ -15,15 +17,22 @@ const Register = () => {
         const email = form.email.value
         const pass = form.password.value
 
-        console.log(name, photo, email, pass);
+        const userData = { name, photo, email, pass }
 
         try {
-            const result = await createUser(email, pass)
-            console.log(result)
-            await updateUserProfile(name, photo)
-            setUser({ ...user, photoURL: photo, displayName: name })
-            navigate('/')
-            toast.success('sign up Successfully')
+            const { data } = axios.post(`${import.meta.env.VITE_API_URL}/users`, userData)
+
+            if (data.insertedId) {
+
+                const result = await createUser(email, pass)
+                console.log(result)
+                await updateUserProfile(name, photo)
+                setUser({ ...user, photoURL: photo, displayName: name })
+                navigate('/')
+                toast.success('sign up Successfully')
+            }
+
+
         } catch (err) {
             toast.error(err?.message)
         }
@@ -33,7 +42,7 @@ const Register = () => {
 
 
         <div className="bg-gray-50 border bg-no-repeat bg-cover bg-center "
-            style={{ backgroundImage: `linear-gradient(#0f0c29BA ,#302b638A,#24243e4D) ,url(${image})` }}>
+            style={{ backgroundImage: `linear - gradient(#0f0c29BA,#302b638A,#24243e4D), url(${image})` }}>
             <div>
                 <form onSubmit={handleSignIn} className="max-w-xl mx-auto my-20  bg-white p-6 shadow-xl">
                     <h2 className="text-2xl text-center font-inter leading-snug font-bold mb-6">Hey,Welcome here!!! <br />Sign Up and join us Now!</h2>

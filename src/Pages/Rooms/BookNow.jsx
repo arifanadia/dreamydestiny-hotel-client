@@ -1,10 +1,11 @@
 import useAuth from "../../Hook/useAuth";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 import BookNowModal from "./BookNowModal";
+import axios from "axios";
 
 
 
@@ -24,8 +25,23 @@ const BookNow = ({ roomDetails }) => {
     const [startDate2, setStartDate2] = useState(new Date());
     // const [isAvailable, setIsAvailable] = useState(availability === true)
     const [open, setOpen] = useState(false);
+    const [booked, setBooked] = useState([]);
+    useEffect(() => {
+        bookData()
+    }, [])
 
-    
+
+    const bookData = async () => {
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/bookings`);
+        console.log(data)
+        setBooked(data)
+    }
+
+    const isAvailable = !booked.some(book => book.room_type === roomDetails.room_type);
+    console.log(isAvailable);
+
+
+
 
 
     const handleOpen = () => setOpen(true);
@@ -38,7 +54,7 @@ const BookNow = ({ roomDetails }) => {
         const checkInDate = startDate
         const checkOutDate = startDate2
         if (checkOutDate <= checkInDate) return toast.error('end date must be after start date')
-    
+
 
         const adultCount = form.adultCount.value;
         console.log(adultCount);
@@ -71,23 +87,26 @@ const BookNow = ({ roomDetails }) => {
         const totalPrice = mainTotalPrice + extraTotalPrice
 
 
-      setBookingData ( {
-                checkInDate: new Date(checkInDate).toLocaleDateString(),
-                checkOutDate: new Date(checkOutDate).toLocaleDateString(),
-                adultCount,
-                childCount,
-                totalPrice,
-                price_per_night,
-                email,
-                img: room_image,
-                room_type,
-                roomCount,
-                name
-            }
-            )
-      
+        setBookingData({
+            checkInDate: new Date(checkInDate).toLocaleDateString(),
+            checkOutDate: new Date(checkOutDate).toLocaleDateString(),
+            adultCount,
+            childCount,
+            totalPrice,
+            price_per_night,
+            email,
+            img: room_image,
+            room_type,
+            roomCount,
+            name
+        }
+        )
+        if (!isAvailable) {
+            return toast.error('room already booked by user')
+        }
 
- 
+
+
 
 
         // } else {
@@ -126,7 +145,7 @@ const BookNow = ({ roomDetails }) => {
             </div>
             <div className=" mt-6 mb-4 md:flex md:gap-4 gap-8  ">
 
-                <DatePicker className="border-2 p-2 rounded-md" selected={startDate} onChange={(date) => setStartDate(date)} minDate={new Date()}/>
+                <DatePicker className="border-2 p-2 rounded-md" selected={startDate} onChange={(date) => setStartDate(date)} minDate={new Date()} />
                 <DatePicker className="border-2 p-2 mt-4 md:mt-0 rounded-md" selected={startDate2} onChange={(date) => setStartDate2(date)} minDate={new Date()} />
             </div>
 
@@ -206,8 +225,11 @@ const BookNow = ({ roomDetails }) => {
 
             </div>
             <div className="form-control mt-6">
+
                 <button onClick={handleOpen}
                     className="btn bg-primaryColor dark:bg-white text-white">Book Now</button>
+
+
                 <BookNowModal bookingData={bookingData} handleClose={handleClose} open={open}></BookNowModal>
 
 

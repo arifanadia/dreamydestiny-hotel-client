@@ -5,6 +5,7 @@ import crib from '../../images/icons/baby-crib.png'
 import washing from '../../images/icons/washing-machine.png'
 import BookNow from "./BookNow";
 import Review from "./Review";
+import DisplayComment from "./DisplayComment";
 
 
 
@@ -16,6 +17,7 @@ const RoomsDetails = () => {
 
     console.log(roomDetails);
     const { room_image, room_type, description, availability, room_size, } = roomDetails || {}
+    
 
 
 
@@ -64,7 +66,11 @@ const RoomsDetails = () => {
             </div>
 
 
-            <Review roomDetails={roomDetails}></Review>
+        <div className="max-w-7xl ml-20">
+        <Review roomDetails={roomDetails}></Review>
+            <DisplayComment roomDetails={roomDetails}></DisplayComment>
+            
+        </div>
 
         </div>
     );

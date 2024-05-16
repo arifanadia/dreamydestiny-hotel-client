@@ -1,6 +1,5 @@
 
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import axios from "axios";
 
@@ -23,8 +22,6 @@ const BookNowModal = ({ bookingData, handleClose, open }) => {
         adultCount,
         childCount,
         totalPrice,
-        price_per_night,
-        email,
         img,
         room_type,
         roomCount,
@@ -33,12 +30,10 @@ const BookNowModal = ({ bookingData, handleClose, open }) => {
 
     const handleConfirm = async () => {
 
-
-
         try {
             const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/bookings`, bookingData)
             console.log(data);
-      
+
 
 
         }

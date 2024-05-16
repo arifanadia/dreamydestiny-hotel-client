@@ -12,6 +12,7 @@ const Rooms = () => {
     const [minPrice, setMinPrice] = useState(100);
     const [maxPrice, setMaxPrice] = useState(500);
     const url = `${import.meta.env.VITE_API_URL}/rooms?minPrice=${minPrice}&maxPrice=${maxPrice}`
+   
 
     useEffect(() => {
         getData()

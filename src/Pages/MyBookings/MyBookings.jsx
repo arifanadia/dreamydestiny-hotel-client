@@ -11,24 +11,13 @@ const MyBookings = () => {
     const [bookings, setBookings] = useState([])
     const { checkInDate, checkOutDate } = bookings || {}
     const [showModal, setShowModal] = useState(false);
+    const [showModal2, setShowModal2] = useState(false);
     const [updateCheckInDate, setUpdateCheckInDate] = useState(checkInDate || '');
     const [updateCheckOutDate, setUpdateCheckOutDate] = useState(checkOutDate || '');
     const updateDate = {
         checkInDate: updateCheckInDate,
         checkOutDate: updateCheckOutDate
     };
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     const url = `${import.meta.env.VITE_API_URL}/my-bookings/${user?.email}`
@@ -40,6 +29,36 @@ const MyBookings = () => {
         const { data } = await axios.get(url, {withCredentials : true});
         console.log(data);
         setBookings(data)
+    }
+    const handleReview = async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = user?.displayName
+        const rating = form.rating.value
+        const comment = form.comment.value
+        const roomId = bookings._Id
+        const timeStamp = new Date().toISOString()
+        const photo = user?.photoURL
+
+        const reviews = {
+            name,
+            rating,
+            comment,
+            roomId,
+            timeStamp,
+            photo
+        }
+
+        try {
+            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/reviews`, reviews)
+            console.log(data);
+
+            setShowModal2(false)
+        }
+        catch (err) {
+            console.log(err);
+        }
+
     }
 
     const handleCancel = (id) => {
@@ -123,12 +142,15 @@ const MyBookings = () => {
                                 booking={booking}
                                 handleUpdateDate={handleUpdateDate}
                                 showModal={showModal}
+                                showModal2={showModal2}
                                 setShowModal={setShowModal}
+                                setShowModal2={setShowModal2}
                                 handleCancel={handleCancel}
                                 updateCheckInDate={updateCheckInDate}
                                 setUpdateCheckInDate={setUpdateCheckInDate}
                                 setUpdateCheckOutDate={setUpdateCheckOutDate}
                                 updateCheckOutDate={updateCheckOutDate}
+                                handleReview={handleReview}
 
 
 

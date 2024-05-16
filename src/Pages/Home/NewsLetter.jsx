@@ -2,7 +2,7 @@
 
 const NewsLetter = () => {
     return (
-        <div className="md:flex items-center justify-center gap-8 max-w-7xl lg:mx-auto mx-6 bg-white shadow-xl rounded-lg p-8 text-primaryColor f font-inter">
+        <div data-aos="fade-left" className="md:flex items-center justify-center gap-8 max-w-7xl lg:mx-auto mx-6 bg-white shadow-xl rounded-lg p-8 text-primaryColor f font-inter">
             <div className="flex-1 ">
                 <p className=" text-lg my-4">STAY TUNED WITH DREMYDESTINY</p>
                 <h1 className="lg:text-3xl text-2xl font-semibold">

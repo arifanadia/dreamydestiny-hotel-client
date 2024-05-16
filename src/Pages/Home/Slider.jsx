@@ -4,6 +4,8 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+import 'aos/dist/aos.css'; 
+
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
 import bg from '../../images/banner/bg.webp'
 import bg1 from '../../images/banner/bg-2.jpeg'
@@ -43,7 +45,8 @@ const Slider = () => {
                         des={"Discover comfort and luxury at our hotels. Perfect for any trip. Indulge, relax, and create unforgettable memories with us."} /></SwiperSlide>
 
             </Swiper>
-            <div className="absolute -top-2 z-[2] right-2 hidden lg:inline w-1/2 py-20 pl-28 mr-10">
+            <div   data-aos="fade-left"
+                data-aos-duration="2000"  className="absolute -top-2 z-[2] right-2 hidden lg:inline w-1/2 py-20 pl-28 mr-10">
                 <form className="lg:w-10/12 p-6 bg-[#f6f6f6E9] text-primaryColor rounded-lg mx-8 lg:mx-0">
                     <p className="text-center font-inter ">CHOOSE DATE TO SEARCH</p>
                     <h2 className="text-center mt-3 text-3xl  font-inter font-semibold">BOOK YOUR STAY</h2>

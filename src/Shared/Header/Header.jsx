@@ -32,6 +32,7 @@ const selectedMode = localStorage.getItem('selectedTheme')
 const Header = () => {
     const { user, logOut } = useAuth()
 
+
     const [selectedTheme, setSelectedTheme] = useState(selectedMode || 'light')
     const handleLogOut = () => {
         logOut()
@@ -111,17 +112,20 @@ const Header = () => {
                     <NavbarToggle />
                 </div>
                 <NavbarCollapse>
-                    <NavbarLink active>
+                    <NavbarLink active navigate='/'>
                         <Link to="/" className="text-primaryColor"> Home </Link>
                     </NavbarLink>
-                    <NavbarLink>
+                    <NavbarLink active  navigate='/about-us'>
                         <Link to='/about-us' className="text-primaryColor"> About Us</Link>
                     </NavbarLink>
-                    <NavbarLink>
+                    <NavbarLink active  navigate='/rooms'>
                         <Link to='/rooms' className="text-primaryColor">Rooms</Link>
                     </NavbarLink>
-                    <NavbarLink>
+                    <NavbarLink active navigate="/my-bookings">
                         <Link to='/my-bookings' className="text-primaryColor">My Bookings</Link>
+                    </NavbarLink>
+                    <NavbarLink active navigate="/contact-us">
+                        <Link to='/contact-us' className="text-primaryColor">Contact-us</Link>
                     </NavbarLink>
                 </NavbarCollapse>
 

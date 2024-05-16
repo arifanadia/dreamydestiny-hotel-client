@@ -8,26 +8,26 @@ import { Link } from "react-router-dom";
 const Featured = () => {
 
     const [rooms, setRooms] = useState([]);
- 
+
     const url = `${import.meta.env.VITE_API_URL}/featured-rooms`
 
     useEffect(() => {
         getData()
-        
+
     }, [])
     const getData = async () => {
         const { data } = await axios.get(url);
         console.log(data);
         setRooms(data)
-        
-       
-    
+
+
+
     }
     const featuredRooms = rooms.filter(f => f.featured)
     console.log(featuredRooms);
 
     console.log(rooms);
- 
+
 
 
     return (
@@ -40,6 +40,10 @@ const Featured = () => {
             <div className="grid h-56 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:h-64 xl:h-80 2xl:h-96 mt-10 mb-20">
                 {featuredRooms.map((room) =>
                     <Card key={room._id}
+                        data-aos="fade-right"
+                        data-aos-offset="300"
+                        data-aos-easing="ease-in-sine"
+                        data-aos-duration="2000"
                         className="lg:max-w-full max-w-lg mx-auto "
 
                     > <img className="h-[250px] rounded-lg" src={room.room_image} alt="" />

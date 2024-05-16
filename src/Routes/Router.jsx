@@ -9,12 +9,14 @@ import LogIn from "../Pages/LogIn/LogIn ";
 import Register from "../Pages/Register/Register";
 import RoomsDetails from "../Pages/Rooms/RoomsDetails";
 import PrivateRoute from "./PrivateRoute";
+import Error from "../Pages/Error/Error";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
+        errorElement : <Error></Error>,
         children: [
             {
                 path: "/",

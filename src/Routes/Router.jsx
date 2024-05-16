@@ -21,6 +21,7 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/featured-rooms`)
              
             },
             {
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
             {
                 path: '/rooms',
                 element: <Rooms></Rooms>,
-                loader: () => fetch(`${import.meta.env.VITE_API_URL}/rooms`)
+                
 
             },
             {

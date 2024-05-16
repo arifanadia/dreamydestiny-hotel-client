@@ -6,6 +6,7 @@ import washing from '../../images/icons/washing-machine.png'
 import BookNow from "./BookNow";
 import Review from "./Review";
 import DisplayComment from "./DisplayComment";
+import SpecialOffer from "../Home/SpecialOffer";
 
 
 
@@ -17,7 +18,7 @@ const RoomsDetails = () => {
 
     console.log(roomDetails);
     const { room_image, room_type, description, availability, room_size, } = roomDetails || {}
-    
+
 
 
 
@@ -65,12 +66,14 @@ const RoomsDetails = () => {
 
             </div>
 
+            <SpecialOffer></SpecialOffer>
 
-        <div className="max-w-7xl ml-20">
-        <Review roomDetails={roomDetails}></Review>
-            <DisplayComment roomDetails={roomDetails}></DisplayComment>
-            
-        </div>
+
+            <div className="max-w-7xl ml-20">
+                <Review roomDetails={roomDetails}></Review>
+                <DisplayComment roomDetails={roomDetails}></DisplayComment>
+
+            </div>
 
         </div>
     );

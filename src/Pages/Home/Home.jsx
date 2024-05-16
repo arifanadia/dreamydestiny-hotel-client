@@ -6,9 +6,11 @@ import MapSection from "./MapSection";
 import SpecialOffer from "./SpecialOffer";
 import NewsLetter from "./NewsLetter";
 import { Helmet } from "react-helmet-async";
+import { useLoaderData } from "react-router-dom";
 
 
 const Home = () => {
+    const rooms = useLoaderData()
 
     return (
 
@@ -19,8 +21,8 @@ const Home = () => {
             </Helmet>
             <Slider></Slider>
             <AboutSection></AboutSection>
-            <Featured></Featured>
-            <SpecialOffer></SpecialOffer>
+            <Featured rooms={rooms}></Featured>
+            <SpecialOffer rooms={rooms}></SpecialOffer>
             <MapSection></MapSection>
             <NewsLetter></NewsLetter>
 

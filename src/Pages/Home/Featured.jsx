@@ -1,28 +1,12 @@
-import axios from "axios";
+
 import { Card } from "flowbite-react";
-import { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 
 
 
-const Featured = () => {
+const Featured = ({rooms}) => {
 
-    const [rooms, setRooms] = useState([]);
-
-    const url = `${import.meta.env.VITE_API_URL}/featured-rooms`
-
-    useEffect(() => {
-        getData()
-
-    }, [])
-    const getData = async () => {
-        const { data } = await axios.get(url);
-        console.log(data);
-        setRooms(data)
-
-
-
-    }
     const featuredRooms = rooms.filter(f => f.featured)
     console.log(featuredRooms);
 

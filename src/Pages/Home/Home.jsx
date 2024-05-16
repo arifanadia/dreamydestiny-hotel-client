@@ -7,6 +7,7 @@ import SpecialOffer from "./SpecialOffer";
 import NewsLetter from "./NewsLetter";
 import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
+import Review from "./Review";
 
 
 const Home = () => {
@@ -24,6 +25,7 @@ const Home = () => {
             <Featured rooms={rooms}></Featured>
             <SpecialOffer rooms={rooms}></SpecialOffer>
             <MapSection></MapSection>
+            <Review></Review>
             <NewsLetter></NewsLetter>
 
         </div>

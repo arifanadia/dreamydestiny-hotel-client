@@ -24,7 +24,7 @@ const Review = () => {
     }, [])
     const getData = async () => {
         const { data } = await axios.get(url);
-        console.log(data);
+       
         setReviews(data)
 
 

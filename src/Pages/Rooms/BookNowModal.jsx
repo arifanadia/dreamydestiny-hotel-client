@@ -42,7 +42,7 @@ const BookNowModal = ({ bookingData, handleClose, open }) => {
         }
     }
 
-    console.log(bookingData);
+
 
 
 

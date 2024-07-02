@@ -5,12 +5,49 @@ live visit link :  https://dreamydestiny-hotel.web.app/
 Welcome to the Dreamy Destiny Hotel, your destination for a luxurious and memorable stay. Experience the perfect blend of comfort, style, and exceptional service.
 
 ## Features
+- **Homepage**:
+  - Banner showcasing hotel rooms
+  - Interactive map displaying hotel location
+  - Newsletter signup for updates and offers
+  - Featured rooms with descriptions and booking options
+  - Authentic user reviews carousel
 
-- **Luxurious Rooms**: Spacious and elegantly designed rooms equipped with modern amenities.
-- **Fine Dining**: Gourmet restaurants offering a variety of cuisines to tantalize your taste buds.
-- **Spa & Wellness**: Rejuvenate with our world-class spa and wellness services.
-- **Event Spaces**: Ideal venues for weddings, conferences, and special events.
-- **Recreational Activities**: Enjoy a range of activities including swimming, fitness center, and more.
+- **User Authentication**:
+  - Email/password signup and login
+  - Google authentication via Firebase
+
+- **Navigation Bar**:
+  - Links to Rooms and My Bookings pages
+  - My Bookings accessible only to authenticated users
+
+- **Rooms Page**:
+  - List of available rooms
+  - Room images with clickable links to room details
+  - Price range filter (server-side implementation)
+  - Room reviews count and ability to post reviews after booking
+
+- **Room Details Page**:
+  - Room description, price per night, size, availability
+  - Room images slideshow
+  - Special offers section
+  - Booking functionality with date picker
+  - Review section (post-booking)
+
+- **My Bookings Page**:
+  - List of rooms booked by the user
+  - Cancel booking option with confirmation modal
+  - Update booking date option
+
+- **Review System**:
+  - Users can post reviews for booked rooms
+  - Reviews display username, rating, comment, and timestamp
+
+- **Access Control**:
+  - Unauthorized users redirected to login for booking
+  - Limited room details view without login
+
+- **404 Page**:
+  - Custom 404 page with a fun image/gif and "Back to Home" button
 
 ## Technologies Used
 

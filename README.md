@@ -55,7 +55,11 @@ Welcome to the Dreamy Destiny Hotel, your destination for a luxurious and memora
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
 - **Hosting**: Firebase
-
+- 
+- **Additional Packages**:
+  - React Helmet for updating browser tab title and meta-data
+  - AOS for animations
+  - Pigeon Maps for interactive map functionality
 
 ## Getting Started
 

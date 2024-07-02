@@ -1,8 +1,8 @@
 # Dreamy Destiny Hotel
 
-live visit link :  https://dreamydestiny-hotel.web.app/
-
 Welcome to the Dreamy Destiny Hotel, your destination for a luxurious and memorable stay. Experience the perfect blend of comfort, style, and exceptional service.
+
+live visit link :  https://dreamydestiny-hotel.web.app/
 
 ## Features
 - **Homepage**:
@@ -81,10 +81,6 @@ To run this project locally, follow these steps:
     ```bash
     npm start
     ```
-
-## Contributing
-
-We welcome contributions to enhance the Dreamy Destiny Hotel website. If you have suggestions or improvements, please create a pull request or open an issue.
 
 ## Contact
 
